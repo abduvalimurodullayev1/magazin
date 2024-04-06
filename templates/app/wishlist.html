@@ -1,0 +1,204 @@
+{% extends 'app/base/main.html' %}
+{% load static %}
+
+
+{% block title %}Checkout{% endblock title %}
+
+{% block content %}
+    <div class="body-wrapper">
+        <!-- Begin Header Area -->
+        {% include 'app/base/navbar.html' %}
+        <!-- Header Area End Here -->
+        <!-- Begin Li's Breadcrumb Area -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active">Wishlist</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Li's Breadcrumb Area End Here -->
+        <!--Wishlist Area Strat-->
+        <div class="wishlist-area pt-60 pb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <form action="#">
+                            <div class="table-content table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th class="li-product-remove">remove</th>
+                                        <th class="li-product-thumbnail">images</th>
+                                        <th class="cart-product-name">Product</th>
+                                        <th class="li-product-price">Unit Price</th>
+                                        <th class="li-product-stock-status">Quantity</th>
+                                        <th class="li-product-add-cart">add to cart</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for product in products %}
+                                        <tr>
+                                            <td class="li-product-remove"><a
+                                                    href="{% url 'delete-wishlist' product.id %}"><i
+                                                    class="fa fa-times"></i></a>
+                                            </td>
+                                            <td class="li-product-thumbnail"><a href="#"><img
+                                                    src="{{ product.image.url }}" width="100" height="100" alt=""></a>
+                                            </td>
+                                            <td class="li-product-name"><a href="#">{{ product.title }}</a></td>
+                                            <td class="li-product-price"><span
+                                                    class="amount">${{ product.price }}</span></td>
+                                            <td class="quantity">
+                                                <div class="cart-plus-minus">
+                                                    <input class="cart-plus-minus-box" name="quantity"
+                                                           value="{{ product.quantity }}"
+                                                           type="text">
+                                                    <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
+                                                    <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                                </div>
+                                            </td>
+                                            <td class="li-product-add-cart"><a
+                                                    href="{% url 'add-shopping-cart' product.id %}">add
+                                                to cart</a></td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Wishlist Area End-->
+        <!-- Begin Footer Area -->
+        {% include 'app/base/footer.html' %}
+        <!-- Footer Area End Here -->
+        <!-- Begin Modal Area -->
+        <div class="modal fade open-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i
+                                class="fa fa-close"></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <!-- Begin Modal Image Area -->
+                            <div class="col-md-5">
+                                <!-- Begin Modal Tab Content Area -->
+                                <div class="tab-content product-details-large myTabContent">
+                                    <div class="tab-pane fade show active" id="single-slide1" role="tabpanel"
+                                         aria-labelledby="single-slide-tab-1">
+                                        <!--Single Product Image Start-->
+                                        <div class="single-product-img img-full">
+                                            <img src="{% static 'app/images/product/large-size/1.jpg' %}" alt="">
+                                        </div>
+                                        <!--Single Product Image End-->
+                                    </div>
+                                    <div class="tab-pane fade" id="single-slide2" role="tabpanel"
+                                         aria-labelledby="single-slide-tab-2">
+                                        <!--Single Product Image Start-->
+                                        <div class="single-product-img img-full">
+                                            <img src="{% static 'app/images/product/large-size/2.jpg' %}" alt="">
+                                        </div>
+                                        <!--Single Product Image End-->
+                                    </div>
+                                    <div class="tab-pane fade" id="single-slide3" role="tabpanel"
+                                         aria-labelledby="single-slide-tab-3">
+                                        <!--Single Product Image Start-->
+                                        <div class="single-product-img img-full">
+                                            <img src="{% static 'app/images/product/large-size/3.jpg' %}" alt="">
+                                        </div>
+                                        <!--Single Product Image End-->
+                                    </div>
+                                    <div class="tab-pane fade" id="single-slide4" role="tabpanel"
+                                         aria-labelledby="single-slide-tab-4">
+                                        <!--Single Product Image Start-->
+                                        <div class="single-product-img img-full">
+                                            <img src="{% static 'app/images/product/large-size/4.jpg' %}" alt="">
+                                        </div>
+                                        <!--Single Product Image End-->
+                                    </div>
+                                    <div class="tab-pane fade" id="single-slide5" role="tabpanel"
+                                         aria-labelledby="single-slide-tab-4">
+                                        <!--Single Product Image Start-->
+                                        <div class="single-product-img img-full">
+                                            <img src="{% static 'app/images/product/large-size/5.jpg' %}" alt="">
+                                        </div>
+                                        <!--Single Product Image End-->
+                                    </div>
+                                    <div class="tab-pane fade" id="single-slide6" role="tabpanel"
+                                         aria-labelledby="single-slide-tab-4">
+                                        <!--Single Product Image Start-->
+                                        <div class="single-product-img img-full">
+                                            <img src="{% static 'app/images/product/large-size/6.jpg' %}" alt="">
+                                        </div>
+                                        <!--Single Product Image End-->
+                                    </div>
+                                </div>
+                                <!-- Modal Tab Content Area End Here -->
+                                <!-- Begin Modal Tab Menu Area -->
+                                <div class="single-product-menu">
+                                    <div class="nav single-slide-menu owl-carousel" role="tablist">
+                                        <div class="single-tab-menu img-full">
+                                            <a class="active" data-toggle="tab" id="single-slide-tab-1"
+                                               href="#single-slide1"><img
+                                                    src="{% static 'app/images/product/small-size/1.jpg' %}" alt=""></a>
+                                        </div>
+                                        <div class="single-tab-menu img-full">
+                                            <a data-toggle="tab" id="single-slide-tab-2" href="#single-slide2"><img
+                                                    src="{% static 'app/images/product/small-size/2.jpg' %}" alt=""></a>
+                                        </div>
+                                        <div class="single-tab-menu img-full">
+                                            <a data-toggle="tab" id="single-slide-tab-3" href="#single-slide3"><img
+                                                    src="{% static 'app/images/product/small-size/3.jpg' %}" alt=""></a>
+                                        </div>
+                                        <div class="single-tab-menu img-full">
+                                            <a data-toggle="tab" id="single-slide-tab-4" href="#single-slide4"><img
+                                                    src="{% static 'app/images/product/small-size/4.jpg' %}" alt=""></a>
+                                        </div>
+                                        <div class="single-tab-menu img-full">
+                                            <a data-toggle="tab" id="single-slide-tab-5" href="#single-slide5"><img
+                                                    src="{% static 'app/images/product/small-size/5.jpg' %}" alt=""></a>
+                                        </div>
+                                        <div class="single-tab-menu img-full">
+                                            <a data-toggle="tab" id="single-slide-tab-6" href="#single-slide6"><img
+                                                    src="{% static 'app/images/product/small-size/6.jpg' %}" alt=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal Tab Menu End Here -->
+                            </div>
+                            <!-- Modal Image Area End Here -->
+                            <!-- Begin Modal Content Area -->
+                            <div class="col-md-7">
+                                <div class="modal-product-info">
+                                    <h2>Accusantium dolorem1</h2>
+                                    <div class="modal-product-price">
+                                        <span class="new-price">$46.80</span>
+                                    </div>
+                                    <div class="cart-description">
+                                        <p>Vector graphic, format: svg. Download for personal, private and
+                                            non-commercial use.</p>
+                                    </div>
+                                    <div class="quantity">
+                                        <input class="input-text qty text" step="1" min="1" max="200" name="quantity"
+                                               value="1" title="Qty" size="4" type="number">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal Content Area End Here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Area End Here -->
+    </div>
+{% endblock content %}
+
